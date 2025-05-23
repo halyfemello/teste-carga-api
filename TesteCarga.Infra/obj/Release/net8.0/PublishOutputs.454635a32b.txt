@@ -1,0 +1,3 @@
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\publish\TesteCarga.Infra.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\publish\TesteCarga.Infra.deps.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\publish\TesteCarga.Infra.pdb

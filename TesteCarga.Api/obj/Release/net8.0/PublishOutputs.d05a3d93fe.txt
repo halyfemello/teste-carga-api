@@ -1,0 +1,12 @@
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\TesteCarga.Api.exe
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\appsettings.Development.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\appsettings.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\TesteCarga.Api.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\TesteCarga.Api.deps.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\TesteCarga.Api.runtimeconfig.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\TesteCarga.Api.pdb
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerUI.dll

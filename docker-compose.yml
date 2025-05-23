@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  api-teste:
+    image: minhaapi:latest
+    container_name: api-teste
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

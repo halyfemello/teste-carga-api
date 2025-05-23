@@ -1,0 +1,11 @@
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\TesteCarga.Infra.deps.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\TesteCarga.Infra.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\bin\Release\net8.0\TesteCarga.Infra.pdb
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.AssemblyInfoInputs.cache
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.AssemblyInfo.cs
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.csproj.CoreCompileInputs.cache
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\refint\TesteCarga.Infra.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\TesteCarga.Infra.pdb
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Infra\obj\Release\net8.0\ref\TesteCarga.Infra.dll

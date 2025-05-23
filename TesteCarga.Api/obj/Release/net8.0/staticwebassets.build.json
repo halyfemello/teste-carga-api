@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "DDFzwGJLLaIcquwN9w0Uf5LRXocIIMG5iwyiAuiNzNk=",
+  "Source": "TesteCarga.Api",
+  "BasePath": "_content/TesteCarga.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

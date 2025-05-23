@@ -1,0 +1,3 @@
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Core\bin\Release\net8.0\publish\TesteCarga.Core.dll
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Core\bin\Release\net8.0\publish\TesteCarga.Core.deps.json
+C:\Projetos\Hmti\teste-carga-api\TesteCarga.Core\bin\Release\net8.0\publish\TesteCarga.Core.pdb
