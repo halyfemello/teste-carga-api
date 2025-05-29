@@ -61,3 +61,41 @@ Isso vai gerar:
    Editar
    ssh root@VPS_IP
    Se conectar direto ✅, está pronto!
+
+# ==============================================================================
+
+# Estrutura de infra pra vps com deploy via docker
+
+# ==============================================================================
+
+infra/
+├── dev/
+│ ├── docker-compose.yml
+│ ├── .env
+├── stage/
+│ ├── docker-compose.yml
+│ ├── .env
+├── prod/
+│ ├── docker-compose.yml
+│ ├── .env
+services/
+├── api-auth/
+│ ├── Dockerfile
+│ ├── docker-compose.yml
+│ └── src/...
+├── api-orders/
+│ ├── Dockerfile
+│ ├── docker-compose.yml
+│ └── src/...
+shared/
+└── mongodb/
+├── docker-compose.yml
+└── data/ # volume persistente (opcional)
+
+✅ 1. Estruturar pastas na VPS
+Execute os seguintes comandos na sua VPS para criar a estrutura:
+
+mkdir -p /root/infra/dev
+mkdir -p /root/services/api-auth
+mkdir -p /root/services/api-orders
+mkdir -p /root/shared/mongodb/data

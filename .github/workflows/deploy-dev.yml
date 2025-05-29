@@ -1,0 +1,61 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    name: Build and Deploy to VPS
+    runs-on: ubuntu-latest
+
+    env:
+      VPS_HOST: 195.200.1.129
+      VPS_USER: root
+      IMAGE_NAME: minhaapi:latest
+      TAR_FILE: minhaapi.tar
+      REMOTE_PATH: /root
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build da imagem Docker
+        run: docker build -t $IMAGE_NAME -f Dockerfile .
+
+      - name: Exportar imagem para tar
+        run: docker save -o $TAR_FILE $IMAGE_NAME
+
+      - name: Instalar SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Enviar arquivos para VPS via SCP
+        run: |
+          scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH
+          scp infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
+
+      - name: Executar deploy remoto via SSH
+        run: |
+          ssh $VPS_USER@$VPS_HOST << 'EOF'
+            set -e
+            echo "🛑 Parando container antigo se existir..."
+            docker stop api-teste || true
+            docker rm api-teste || true
+
+            echo "🧼 Removendo imagem antiga..."
+            docker rmi -f minhaapi:latest || true
+
+            echo "♻️ Carregando nova imagem..."
+            docker load -i /root/minhaapi.tar
+
+            echo "📦 Subindo com docker-compose..."
+            cd /root/infra/dev
+            docker compose up -d
+
+            echo "✅ Deploy finalizado!"
+          EOF
