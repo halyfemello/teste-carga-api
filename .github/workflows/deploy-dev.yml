@@ -34,6 +34,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Adicionar VPS ao known_hosts
+        run: |
+          ssh-keyscan -H $VPS_HOST >> ~/.ssh/known_hosts
+
       - name: Enviar arquivos para VPS via SCP
         run: |
           scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH
