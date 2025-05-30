@@ -24,7 +24,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build da imagem Docker
-        run: docker build -t $IMAGE_NAME -f Dockerfile .
+        run: docker build -t $IMAGE_NAME -f ./Dockerfile .
 
       - name: Exportar imagem para tar
         run: docker save -o $TAR_FILE $IMAGE_NAME
@@ -38,10 +38,14 @@ jobs:
         run: |
           ssh-keyscan -H $VPS_HOST >> ~/.ssh/known_hosts
 
+      - name: Criar pastas remotas se necessário
+        run: |
+          ssh $VPS_USER@$VPS_HOST "mkdir -p $REMOTE_PATH/infra/dev"
+
       - name: Enviar arquivos para VPS via SCP
         run: |
-          scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH
-          scp infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
+          scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH/
+          scp ./infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
 
       - name: Executar deploy remoto via SSH
         run: |
