@@ -45,10 +45,10 @@ jobs:
       - name: Verificar arquivos disponíveis
         run: ls -la $GITHUB_WORKSPACE
 
-      - name: Enviar arquivos para VPS via SCP
-        run: |
-          scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH/
-          scp $GITHUB_WORKSPACE/infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
+      # - name: Enviar arquivos para VPS via SCP
+      #   run: |
+      #     scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH/
+      #     scp $GITHUB_WORKSPACE/infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
 
       - name: Executar deploy remoto via SSH
         run: |
@@ -65,7 +65,7 @@ jobs:
             docker load -i /root/minhaapi.tar
 
             echo "📦 Subindo com docker-compose..."
-            cd /root/infra/dev
+            cd /root/services/minhaapi
             docker compose up -d
 
             echo "✅ Deploy finalizado!"

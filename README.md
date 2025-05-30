@@ -68,29 +68,18 @@ Isso vai gerar:
 
 # ==============================================================================
 
-infra/
-├── dev/
-│ ├── docker-compose.yml
-│ ├── .env
-├── stage/
-│ ├── docker-compose.yml
-│ ├── .env
-├── prod/
-│ ├── docker-compose.yml
-│ ├── .env
-services/
-├── api-auth/
-│ ├── Dockerfile
-│ ├── docker-compose.yml
-│ └── src/...
-├── api-orders/
-│ ├── Dockerfile
-│ ├── docker-compose.yml
-│ └── src/...
-shared/
-└── mongodb/
-├── docker-compose.yml
-└── data/ # volume persistente (opcional)
+├── infra/
+│ └── dev/
+│ └── docker-compose.yml # Apenas serviços de infra (MongoDB, Portainer, n8n)
+├── services/
+│ └── minhaapi/
+│ ├── docker-compose.yml # Compose da aplicação em si (minhaapi)
+│ └── minhaapi.tar # Imagem exportada (ou código da API)
+├── shared/
+│ ├── mongodb/
+│ │ └── data/ # Volume do MongoDB
+│ └── .env # Arquivo .env comum, se necessário
+└── deploy.sh (opcional) # Script para orquestrar deploys
 
 ✅ 1. Estruturar pastas na VPS
 Execute os seguintes comandos na sua VPS para criar a estrutura:
@@ -99,3 +88,6 @@ mkdir -p /root/infra/dev
 mkdir -p /root/services/api-auth
 mkdir -p /root/services/api-orders
 mkdir -p /root/shared/mongodb/data
+
+✅ 2. Enviar um arquivo/diretorio local para a vps
+scp -r infra root@195.200.1.129:/root/
