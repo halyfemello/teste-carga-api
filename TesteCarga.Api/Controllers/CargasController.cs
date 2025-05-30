@@ -37,5 +37,18 @@ namespace TesteCarga.Api.Controllers
 
             return Ok(teste);
         }
+
+        [HttpGet("teste3")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> Teste3()
+        {
+            var teste = new
+            {
+                Nome = "Teste",
+                Data = DateTime.Now
+            };
+
+            return Ok(teste);
+        }
     }
 }
