@@ -43,12 +43,12 @@ jobs:
           ssh $VPS_USER@$VPS_HOST "mkdir -p $REMOTE_PATH/infra/dev"
 
       - name: Verificar arquivos disponíveis
-        run: ls -la ./infra/dev
+        run: ls -la $GITHUB_WORKSPACE/infra/dev
 
       - name: Enviar arquivos para VPS via SCP
         run: |
           scp $TAR_FILE $VPS_USER@$VPS_HOST:$REMOTE_PATH/
-          scp ./infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
+          scp $GITHUB_WORKSPACE/infra/dev/docker-compose.yml $VPS_USER@$VPS_HOST:$REMOTE_PATH/infra/dev/docker-compose.yml
 
       - name: Executar deploy remoto via SSH
         run: |
