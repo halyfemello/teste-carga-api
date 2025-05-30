@@ -1,11 +1,16 @@
 version: "3.8"
 
 services:
-  api-teste:
+  minhaapi:
     image: minhaapi:latest
     container_name: api-teste
-    ports:
-      - "8080:80"
+    networks:
+      - dev_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=PathPrefix(`/dev`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.services.api.loadbalancer.server.port=80"
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
