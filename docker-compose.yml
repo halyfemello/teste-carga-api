@@ -11,9 +11,12 @@ services:
       - "traefik.http.routers.api.rule=PathPrefix(`/dev/minhaapi`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
+      - "traefik.http.services.api.loadbalancer.server.port=7000"
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "7000:7000"
 
 networks:
   traefik:
