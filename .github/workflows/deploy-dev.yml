@@ -43,7 +43,7 @@ jobs:
           ssh $VPS_USER@$VPS_HOST "mkdir -p $REMOTE_PATH/infra/dev"
 
       - name: Verificar arquivos disponíveis
-        run: ls -la $GITHUB_WORKSPACE/infra/dev
+        run: ls -la $GITHUB_WORKSPACE
 
       - name: Enviar arquivos para VPS via SCP
         run: |
