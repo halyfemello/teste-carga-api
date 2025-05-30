@@ -5,7 +5,7 @@ services:
     image: minhaapi:latest
     container_name: api-teste
     networks:
-      - dev_net
+      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api.rule=PathPrefix(`/dev`)"
@@ -14,3 +14,7 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+
+networks:
+  traefik:
+    external: true
