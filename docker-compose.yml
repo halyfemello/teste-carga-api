@@ -31,5 +31,5 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
 
 networks:
-  traefik:
+  traefik_public:
     external: true
