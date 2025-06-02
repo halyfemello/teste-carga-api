@@ -8,22 +8,30 @@ services:
       - web
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`app.gilberto.cloud`)"
+      - "traefik.http.routers.app.tls=true"
+      - "traefik.http.routers.app.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.app.loadbalancer.server.port=8000"
+      - "traefik.docker.network=web"
 
-      # 1) Roteador HTTP (porta 80) → redireciona para HTTPS
-      - "traefik.http.routers.api-http.rule=Host(`app.hmti.com.br`) && PathPrefix(`/dev/minhaapi`)"
-      - "traefik.http.routers.api-http.entrypoints=web"
-      - "traefik.http.routers.api-http.middlewares=redirect-to-https"
+    # labels:
+    #   - "traefik.enable=true"
 
-      # 2) Roteador HTTPS (porta 443) → atende em TLS com Let’s Encrypt
-      - "traefik.http.routers.api.rule=Host(`app.hmti.com.br`) && PathPrefix(`/dev/minhaapi`)"
-      - "traefik.http.routers.api.entrypoints=websecure"
-      - "traefik.http.routers.api.tls=true"
-      - "traefik.http.routers.api.tls.certresolver=letsencrypt-prod"
-      - "traefik.http.services.api.loadbalancer.server.port=80"
+    #   # 1) Roteador HTTP (porta 80) → redireciona para HTTPS
+    #   - "traefik.http.routers.api-http.rule=Host(`app.hmti.com.br`) && PathPrefix(`/dev/minhaapi`)"
+    #   - "traefik.http.routers.api-http.entrypoints=web"
+    #   - "traefik.http.routers.api-http.middlewares=redirect-to-https"
+
+    #   # 2) Roteador HTTPS (porta 443) → atende em TLS com Let’s Encrypt
+    #   - "traefik.http.routers.api.rule=Host(`app.hmti.com.br`) && PathPrefix(`/dev/minhaapi`)"
+    #   - "traefik.http.routers.api.entrypoints=websecure"
+    #   - "traefik.http.routers.api.tls=true"
+    #   - "traefik.http.routers.api.tls.certresolver=letsencrypt-prod"
+    #   - "traefik.http.services.api.loadbalancer.server.port=80"
 
       # 3) Middleware para forçar HTTPS
-      - "traefik.http.middlewares.redirect-to-https.redirectScheme.scheme=https"
-      - "traefik.http.middlewares.redirect-to-https.redirectScheme.permanent=true"
+      # - "traefik.http.middlewares.redirect-to-https.redirectScheme.scheme=https"
+      # - "traefik.http.middlewares.redirect-to-https.redirectScheme.permanent=true"
 
 
     restart: always
