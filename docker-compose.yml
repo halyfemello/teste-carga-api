@@ -8,7 +8,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`app.gilberto.cloud`)"
+      - "traefik.http.routers.app.rule=Host(`app.hmti.com.br`)"
       - "traefik.http.routers.app.tls=true"
       - "traefik.http.routers.app.tls.certresolver=lets-encrypt"
       - "traefik.http.services.app.loadbalancer.server.port=8000"
