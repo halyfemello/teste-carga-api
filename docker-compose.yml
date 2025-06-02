@@ -5,7 +5,7 @@ services:
     image: minhaapi:latest
     container_name: api-teste
     networks:
-      - traefik
+      - web
     labels:
       - "traefik.enable=true"
 
@@ -28,8 +28,8 @@ services:
 
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
 
 networks:
-  traefik:
+  web:
     external: true

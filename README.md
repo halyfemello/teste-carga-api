@@ -93,3 +93,7 @@ mkdir -p /root/shared/mongodb/data
 scp -r infra root@195.200.1.129:/root/
 
 $ scp -r \* root@195.200.1.129:/root/traefik/ <= copia todos os arquivos de dentro da pasta da qual vc está
+
+# testes
+
+admin:$apr1$lF4yH1dB$yKE9PxtpNmjBFcYtnwNTe0
