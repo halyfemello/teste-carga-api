@@ -1,3 +1,6 @@
+using Prometheus;
+using Prometheus.HttpMetrics;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,7 +21,17 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddAuthorization();
 
+// ────────────────────────────────────────────────────────────────────────────────
+// Adicionar o serviço de métricas Prometheus
+// Não é necessário registrar AddHttpMetrics no IServiceCollection
+// ────────────────────────────────────────────────────────────────────────────────
+
 var app = builder.Build();
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Mapear o endpoint /metrics automaticamente
+app.UseHttpMetrics();
+// ────────────────────────────────────────────────────────────────────────────────
 
 // Remova o redirecionamento para HTTPS
 // app.UseHttpsRedirection();
@@ -37,5 +50,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Expor o endpoint /metrics para o Prometheus raspar
+app.MapMetrics();
+// ────────────────────────────────────────────────────────────────────────────────
 
 app.Run();

@@ -1,0 +1,12 @@
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\bin\Debug\net8.0\TesteCarga.Core.deps.json
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\bin\Debug\net8.0\TesteCarga.Core.dll
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\bin\Debug\net8.0\TesteCarga.Core.pdb
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.AssemblyInfoInputs.cache
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.AssemblyInfo.cs
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.csproj.CoreCompileInputs.cache
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.sourcelink.json
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.dll
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\refint\TesteCarga.Core.dll
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\TesteCarga.Core.pdb
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Core\obj\Debug\net8.0\ref\TesteCarga.Core.dll

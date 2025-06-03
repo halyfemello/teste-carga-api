@@ -31,3 +31,6 @@ C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\obj\Debug\net8.0\refint\TesteCar
 C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\obj\Debug\net8.0\TesteCarga.Api.pdb
 C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\obj\Debug\net8.0\TesteCarga.Api.genruntimeconfig.cache
 C:\Projetos\Hmti\teste-carga-api\TesteCarga.Api\obj\Debug\net8.0\ref\TesteCarga.Api.dll
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Api\obj\Debug\net8.0\TesteCarga.Api.sourcelink.json
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Api\bin\Debug\net8.0\Prometheus.NetStandard.dll
+C:\Projetos\HmTi\teste-carga-api\TesteCarga.Api\bin\Debug\net8.0\Prometheus.AspNetCore.dll
