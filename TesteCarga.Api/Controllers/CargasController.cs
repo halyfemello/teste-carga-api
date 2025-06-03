@@ -25,17 +25,12 @@ namespace TesteCarga.Api.Controllers
             return Ok(teste);
         }
 
-        [HttpGet("teste2")]
+        [HttpGet("teste-erro")]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> Teste2()
+        public async Task<IActionResult> TesteErro()
         {
-            var teste = new
-            {
-                Nome = "Teste",
-                Data = DateTime.Now
-            };
-
-            return Ok(teste);
+            ModelState.AddModelError("Erro", "Erro de validação");
+            return BadRequest(ModelState);
         }
     }
 }
