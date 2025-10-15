@@ -30,7 +30,7 @@ services:
 
   # Query Service - Backend do SigNoz (versão Community)
   signoz-query-service:
-    image: signoz/query-service:0.45.0
+    image: signoz/query-service:0.64.0
     container_name: signoz-query-service
     restart: unless-stopped
     networks:
@@ -67,7 +67,7 @@ services:
 
   # OpenTelemetry Collector - Coleta métricas dos containers
   signoz-otel-collector:
-    image: signoz/signoz-otel-collector:0.88.11
+    image: signoz/signoz-otel-collector:0.111.16
     container_name: signoz-otel-collector
     restart: unless-stopped
     user: root
@@ -88,7 +88,7 @@ services:
 
   # Frontend - Interface Web do SigNoz
   signoz-frontend:
-    image: signoz/frontend:0.45.0
+    image: signoz/frontend:0.64.0
     container_name: signoz-frontend
     restart: unless-stopped
     networks:
