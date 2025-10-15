@@ -17,6 +17,9 @@ echo "🚀 Enviando arquivos para VPS..."
 scp $TAR_FILE $VPS_USER@$VPS_HOST:$VPS_DEST
 scp docker-compose.yml $VPS_USER@$VPS_HOST:$VPS_DEST
 
+echo "📊 Enviando configurações do SigNoz..."
+scp -r infra/signoz/* $VPS_USER@$VPS_HOST:/root/docker/signoz/
+
 echo "🔁 Executando deploy remoto via SSH..."
 ssh $VPS_USER@$VPS_HOST << EOF
   set -e

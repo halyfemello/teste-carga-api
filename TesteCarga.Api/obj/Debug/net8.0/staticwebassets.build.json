@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "DDFzwGJLLaIcquwN9w0Uf5LRXocIIMG5iwyiAuiNzNk=",
-  "Source": "TesteCarga.Api",
-  "BasePath": "_content/TesteCarga.Api",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"i6zgwdeSCwFl4sQWuC4IrzVH9jGa8Rd9BeSMqAOqHYY=","Source":"TesteCarga.Api","BasePath":"_content/TesteCarga.Api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

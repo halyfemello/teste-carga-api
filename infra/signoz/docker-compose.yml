@@ -1,0 +1,115 @@
+networks:
+  web:
+    external: true
+
+volumes:
+  signoz-data:
+
+services:
+  # ClickHouse - Banco de dados para métricas e traces
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.11
+    container_name: signoz-clickhouse
+    restart: unless-stopped
+    networks:
+      - web
+    volumes:
+      - signoz-data:/var/lib/clickhouse/
+    environment:
+      - CLICKHOUSE_DB=signoz
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--query", "SELECT 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Query Service - Backend do SigNoz (versão Community)
+  signoz-query-service:
+    image: signoz/query-service:0.45.0
+    container_name: signoz-query-service
+    restart: unless-stopped
+    networks:
+      - web
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    volumes:
+      - ./data:/var/lib/signoz
+    environment:
+      - ClickHouseUrl=tcp://clickhouse:9000
+      - STORAGE=clickhouse
+      - GODEBUG=netdns=go
+      - TELEMETRY_ENABLED=false
+      - DEPLOYMENT_TYPE=docker-standalone-amd
+      - SIGNOZ_LOCAL_DB_PATH=/var/lib/signoz/signoz.db
+    ports:
+      - "8080:8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.signoz-api.rule=Host(`signoz.hmti.com.br`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.signoz-api.entrypoints=websecure"
+      - "traefik.http.routers.signoz-api.tls=true"
+      - "traefik.http.routers.signoz-api.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.signoz-api.priority=100"
+      - "traefik.http.services.signoz-api.loadbalancer.server.port=8080"
+      - "traefik.docker.network=web"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/v1/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # OpenTelemetry Collector - Coleta métricas dos containers
+  signoz-otel-collector:
+    image: signoz/signoz-otel-collector:0.88.11
+    container_name: signoz-otel-collector
+    restart: unless-stopped
+    user: root
+    networks:
+      - web
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel/config.yaml
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: ["--config=/etc/otel/config.yaml"]
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+    environment:
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=signoz-otel-collector,deployment.environment=production
+
+  # Frontend - Interface Web do SigNoz
+  signoz-frontend:
+    image: signoz/frontend:0.45.0
+    container_name: signoz-frontend
+    restart: unless-stopped
+    networks:
+      - web
+    depends_on:
+      signoz-query-service:
+        condition: service_healthy
+    ports:
+      - "3301:3301"
+    environment:
+      - FRONTEND_API_ENDPOINT=http://signoz-query-service:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.signoz.rule=Host(`signoz.hmti.com.br`)"
+      - "traefik.http.routers.signoz.entrypoints=websecure"
+      - "traefik.http.routers.signoz.tls=true"
+      - "traefik.http.routers.signoz.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.signoz.loadbalancer.server.port=3301"
+      - "traefik.docker.network=web"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3301"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

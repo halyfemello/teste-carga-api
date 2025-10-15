@@ -1,0 +1,57 @@
+[http.middlewares.simpleAuth.basicAuth]
+  users = [
+    "admin:$apr1$lF4yH1dB$yKE9PxtpNmjBFcYtnwNTe0"
+  ]
+
+# Use with traefik.http.routers.myRouter.middlewares: "redirect-www-to-main@file"
+[http.middlewares]
+  [http.middlewares.redirect-www-to-main.redirectregex]
+      permanent = true
+      regex = "^https?://www\\.(.+)"
+      replacement = "https://${1}"
+
+[http.routers.api]
+  rule = "Host(`traefik.hmti.com.br`)"
+  entrypoints = ["websecure"]
+  middlewares = ["simpleAuth"]
+  service = "api@internal"
+  [http.routers.api.tls]
+    certResolver = "lets-encrypt"
+
+# SigNoz - Acesso via domínio com SSL
+[http.routers.signoz-https]
+  rule = "Host(`signoz.hmti.com.br`)"
+  entrypoints = ["websecure"]
+  service = "signoz-frontend"
+  priority = 1
+  [http.routers.signoz-https.tls]
+    certResolver = "lets-encrypt"
+
+[http.routers.signoz-api-https]
+  rule = "Host(`signoz.hmti.com.br`) && PathPrefix(`/api`)"
+  entrypoints = ["websecure"]
+  service = "signoz-api"
+  priority = 100
+  [http.routers.signoz-api-https.tls]
+    certResolver = "lets-encrypt"
+
+# SigNoz - Acesso via IP (será redirecionado para HTTPS pelo Traefik)
+[http.routers.signoz-http]
+  rule = "Host(`signoz.hmti.com.br`)"
+  entrypoints = ["web"]
+  service = "signoz-frontend"
+  priority = 1
+
+[http.routers.signoz-api-http]
+  rule = "Host(`signoz.hmti.com.br`) && PathPrefix(`/api`)"
+  entrypoints = ["web"]
+  service = "signoz-api"
+  priority = 100
+
+[http.services.signoz-frontend.loadBalancer]
+  [[http.services.signoz-frontend.loadBalancer.servers]]
+    url = "http://signoz-frontend:3301"
+
+[http.services.signoz-api.loadBalancer]
+  [[http.services.signoz-api.loadBalancer.servers]]
+    url = "http://signoz-query-service:8080"
