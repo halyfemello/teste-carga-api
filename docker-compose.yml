@@ -6,6 +6,7 @@ services:
     container_name: api-teste
     networks:
       - web
+      - signoz-net
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.app.rule=Host(`app.hmti.com.br`)"
@@ -27,4 +28,6 @@ services:
 
 networks:
   web:
+    external: true
+  signoz-net:
     external: true
