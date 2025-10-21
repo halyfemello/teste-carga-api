@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  signoz:
+    networks:
+       - signoz-net
+       - infra
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.signoz-frontend.rule=Host(\signoz.hmti.com.br\)'
+      - 'traefik.http.routers.signoz-frontend.entrypoints=websecure'
+      - 'traefik.http.routers.signoz-frontend.tls=true'
+      - 'traefik.http.routers.signoz-frontend.tls.certresolver=lets-encrypt'
+      - 'traefik.http.services.signoz-frontend.loadbalancer.server.port=8080'
+      - 'traefik.docker.network=infra'
+
+  otel-collector:
+    networks:
+       - signoz-net
+       - infra
+
+  clickhouse:
+    networks:
+      - signoz-net
+      - infra
+
+networks:
+  infra:
+    external: true
+  signoz-net:
+    external: true

@@ -35,14 +35,6 @@ services:
     networks:
       - dev_net
 
-  minhaapi:
-    image: minhaapi:latest
-    container_name: api-teste
-    ports:
-      - "8080:80"
-    networks:
-      - dev_net
-
 networks:
   dev_net:
 
