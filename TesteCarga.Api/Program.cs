@@ -27,11 +27,6 @@ builder.Services.AddCors(options =>
 builder.Services.AddAuthorization();
 
 // ────────────────────────────────────────────────────────────────────────────────
-// Adicionar o serviço de métricas Prometheus
-// Não é necessário registrar AddHttpMetrics no IServiceCollection
-// ────────────────────────────────────────────────────────────────────────────────
-
-// ────────────────────────────────────────────────────────────────────────────────
 // Configuração OpenTelemetry para SigNoz
 // ────────────────────────────────────────────────────────────────────────────────
 // Prioriza variáveis de ambiente OTEL_* (do docker-compose) sobre appsettings.json

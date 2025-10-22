@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj": {}
+    "C:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj": {}
   },
   "projects": {
-    "c:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj": {
+    "C:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj",
+        "projectUniqueName": "C:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj",
         "projectName": "TesteCarga.Api",
-        "projectPath": "c:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj",
+        "projectPath": "C:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\TesteCarga.Api.csproj",
         "packagesPath": "C:\\Users\\halyf\\.nuget\\packages\\",
-        "outputPath": "c:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\obj\\",
+        "outputPath": "C:\\Projetos\\HmTi\\teste-carga-api\\TesteCarga.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\halyf\\AppData\\Roaming\\NuGet\\NuGet.Config"
