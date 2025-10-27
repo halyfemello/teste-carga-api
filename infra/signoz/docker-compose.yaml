@@ -1,7 +1,8 @@
 version: "3"
 x-common: &common
   networks:
-    - infra
+    - web
+    - signoz-net
   restart: unless-stopped
   logging:
     options:
