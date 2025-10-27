@@ -5,6 +5,15 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
+  hostmetrics:
+    collection_interval: 30s
+    scrapers:
+      cpu:
+      load:
+      memory:
+      disk:
+      filesystem:
+      network:
   prometheus:
     config:
       global:
@@ -25,6 +34,14 @@ processors:
     # Using OTEL_RESOURCE_ATTRIBUTES envvar, env detector adds custom labels.
     detectors: [env, system]
     timeout: 2s
+  resource/hostmetrics:
+    attributes:
+      - key: host.name
+        from_attribute: host.name
+        action: upsert
+      - key: host.id
+        from_attribute: host.id
+        action: upsert
   signozspanmetrics/delta:
     metrics_exporter: signozclickhousemetrics
     metrics_flush_interval: 60s
@@ -100,6 +117,10 @@ service:
     metrics:
       receivers: [otlp]
       processors: [batch]
+      exporters: [signozclickhousemetrics]
+    metrics/hostmetrics:
+      receivers: [hostmetrics]
+      processors: [resourcedetection, resource/hostmetrics, batch]
       exporters: [signozclickhousemetrics]
     metrics/prometheus:
       receivers: [prometheus]
